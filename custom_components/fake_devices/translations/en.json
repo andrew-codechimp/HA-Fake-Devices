@@ -1,0 +1,28 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "data": {
+                    "name": "Name",
+                    "manufacturer": "Manufacturer",
+                    "model": "Model",
+                    "serial_number": "Serial number"
+                } },
+            "reconfigure": {
+                "data": {
+                    "name": "Name",
+                    "manufacturer": "Manufacturer",
+                    "model": "Model",
+                    "serial_number": "Serial number"
+                } }
+        },
+        "error": {
+            "unknown": "Unknown error occurred."
+        },
+        "abort": {
+            "already_configured": "This entry is already configured.",
+            "already_in_progress": "Configuration flow is already in progress",
+            "reconfigure_successful": "Reconfiguration was successful"
+        }
+    }
+}

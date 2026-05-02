@@ -1,0 +1,7 @@
+{
+    "name": "Fake Devices",
+    "filename": "fake_devices.zip",
+    "hide_default_branch": true,
+    "homeassistant": "2026.4.2",
+    "zip_release": true
+}

@@ -1,0 +1,23 @@
+{
+    "git.autofetch": true,
+    "python.createEnvironment.trigger": "off",
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file",
+    "editor.codeActionsOnSave": {},
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true,
+        "editor.formatOnSaveMode": "file",
+        "editor.formatOnType": false,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "always"
+        }
+    },
+    "[markdown]": {
+        "editor.formatOnSave": false
+    },
+    "ruff.nativeServer": "off",
+    "ruff.importStrategy": "fromEnvironment",
+    "ruff.configuration": "/workspaces/HA-Fake-Devices/pyproject.toml",
+    "python.terminal.activateEnvInCurrentTerminal": true,
+}

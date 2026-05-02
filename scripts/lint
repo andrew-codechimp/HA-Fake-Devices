@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Move to project root
+cd "$(dirname "$0")/.."
+
+echo "Running ruff check..."
+uv run ruff check . --fix
+
+echo "Running mypy type checking..."
+uv run mypy custom_components/fake_devices/ --check-untyped-defs
+
+echo "Lint completed successfully!"
