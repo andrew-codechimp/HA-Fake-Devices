@@ -20,8 +20,6 @@
             "unknown": "Unknown error occurred."
         },
         "abort": {
-            "already_configured": "This entry is already configured.",
-            "already_in_progress": "Configuration flow is already in progress",
             "reconfigure_successful": "Reconfiguration was successful"
         }
     }

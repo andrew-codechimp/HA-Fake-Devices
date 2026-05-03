@@ -25,13 +25,11 @@ from .const import (
     DOMAIN,
     MIN_HA_VERSION,
 )
-from .data import FakeDevicesData
 
 if TYPE_CHECKING:
+    from homeassistant.config_entries import ConfigEntry
     from homeassistant.core import HomeAssistant
     from homeassistant.helpers.typing import ConfigType
-
-    from .data import FakeDevicesConfigEntry
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -54,25 +52,17 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:  # noqa:
 
 async def async_setup_entry(
     hass: HomeAssistant,
-    entry: FakeDevicesConfigEntry,
+    entry: ConfigEntry,
 ) -> bool:
     """Set up this integration using UI."""
-    fakedevicedata = FakeDevicesData(
-        name=entry.data[CONF_NAME],
-        manufacturer=entry.data[CONF_MANUFACTURER],
-        model=entry.data.get(CONF_MODEL),
-        serial_number=entry.data.get(CONF_SERIAL_NUMBER),
-    )
-    entry.runtime_data = fakedevicedata
-
     device_registry = dr.async_get(hass)
     device_registry.async_get_or_create(
         config_entry_id=entry.entry_id,
         identifiers={(DOMAIN, entry.entry_id)},
-        name=fakedevicedata.name,
-        manufacturer=fakedevicedata.manufacturer,
-        model=fakedevicedata.model,
-        serial_number=fakedevicedata.serial_number,
+        name=entry.data[CONF_NAME],
+        manufacturer=entry.data[CONF_MANUFACTURER],
+        model=entry.data.get(CONF_MODEL),
+        serial_number=entry.data.get(CONF_SERIAL_NUMBER),
     )
 
     entry.async_on_unload(entry.add_update_listener(async_reload_entry))
@@ -82,7 +72,7 @@ async def async_setup_entry(
 
 async def async_unload_entry(
     hass: HomeAssistant,
-    entry: FakeDevicesConfigEntry,
+    entry: ConfigEntry,
 ) -> bool:
     """Unload a config entry."""
     return await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
@@ -90,7 +80,7 @@ async def async_unload_entry(
 
 async def async_reload_entry(
     hass: HomeAssistant,
-    entry: FakeDevicesConfigEntry,
+    entry: ConfigEntry,
 ) -> None:
     """Reload config entry."""
     await hass.config_entries.async_reload(entry.entry_id)

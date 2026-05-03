@@ -26,7 +26,7 @@ USER_SCHEMA = vol.Schema(
 
 
 class FakeDevicesFlowHandler(ConfigFlow, domain=DOMAIN):
-    """Config flow for FakeDevices."""
+    """Config flow for Fake Devices."""
 
     VERSION = 1
 
