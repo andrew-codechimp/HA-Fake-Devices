@@ -5,9 +5,9 @@
     "@andrew-codechimp"
   ],
   "config_flow": true,
-  "documentation": "https://github.com/andrew-codechimp/ha-fake-device",
+  "documentation": "https://github.com/andrew-codechimp/ha-fake-devices",
   "integration_type": "device",
   "iot_class": "assumed_state",
-  "issue_tracker": "https://github.com/andrew-codechimp/ha-fake-device/issues",
+  "issue_tracker": "https://github.com/andrew-codechimp/ha-fake-devices/issues",
   "version": "0.1.0"
 }
