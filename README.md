@@ -5,7 +5,7 @@
 [![Downloads][download-latest-shield]]()
 [![License][license-shield]](LICENSE)
 
-This integration creates fake devices in Home Assistant, useful for adding helper integrations like [Battery Notes](https://github.com/andrew-codechimp/ha-battery-notes) to when you don't have a real device.
+This integration creates fake devices in Home Assistant, useful for adding helper integrations like [Battery Notes](https://github.com/andrew-codechimp/ha-battery-notes) to dumb devices.
 
 You can add the device name, manufacturer, model and serial number. No entities are created, it's just a dumb device.
 
