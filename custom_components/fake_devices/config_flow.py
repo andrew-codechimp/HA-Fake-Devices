@@ -18,7 +18,7 @@ from .const import (
 USER_SCHEMA = vol.Schema(
     {
         vol.Required(CONF_NAME): str,
-        vol.Required(CONF_MANUFACTURER): str,
+        vol.Optional(CONF_MANUFACTURER): str,
         vol.Optional(CONF_MODEL): str,
         vol.Optional(CONF_SERIAL_NUMBER): str,
     }
@@ -59,7 +59,7 @@ class FakeDevicesFlowHandler(ConfigFlow, domain=DOMAIN):
                 title=user_input[CONF_NAME],
                 data={
                     CONF_NAME: user_input[CONF_NAME],
-                    CONF_MANUFACTURER: user_input[CONF_MANUFACTURER],
+                    CONF_MANUFACTURER: user_input.get(CONF_MANUFACTURER),
                     CONF_MODEL: user_input.get(CONF_MODEL),
                     CONF_SERIAL_NUMBER: user_input.get(CONF_SERIAL_NUMBER),
                 },

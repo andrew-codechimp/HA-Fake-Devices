@@ -60,7 +60,7 @@ async def async_setup_entry(
         config_entry_id=entry.entry_id,
         identifiers={(DOMAIN, entry.entry_id)},
         name=entry.data[CONF_NAME],
-        manufacturer=entry.data[CONF_MANUFACTURER],
+        manufacturer=entry.data.get(CONF_MANUFACTURER),
         model=entry.data.get(CONF_MODEL),
         serial_number=entry.data.get(CONF_SERIAL_NUMBER),
     )
