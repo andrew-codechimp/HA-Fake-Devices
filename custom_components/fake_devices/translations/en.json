@@ -2,6 +2,7 @@
     "config": {
         "step": {
             "user": {
+                "title": "Add Fake Device",
                 "data": {
                     "name": "Name",
                     "manufacturer": "Manufacturer",
@@ -9,6 +10,7 @@
                     "serial_number": "Serial number"
                 } },
             "reconfigure": {
+                "title": "Reconfigure Fake Device",
                 "data": {
                     "name": "Name",
                     "manufacturer": "Manufacturer",
