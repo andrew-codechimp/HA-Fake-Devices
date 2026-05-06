@@ -1,0 +1,28 @@
+{
+    "config": {
+        "step": {
+            "user": {
+                "title": "Vorgetäuschtes Gerät hinzufügen",
+                "data": {
+                    "name": "Name",
+                    "manufacturer": "Hersteller",
+                    "model": "Modell",
+                    "serial_number": "Seriennummer"
+                } },
+            "reconfigure": {
+                "title": "Vorgetäuschtes Gerät neu konfigurieren",
+                "data": {
+                    "name": "Name",
+                    "manufacturer": "Hersteller",
+                    "model": "Modell",
+                    "serial_number": "Seriennummer"
+                } }
+        },
+        "error": {
+            "unknown": "Unbekannter Fehler."
+        },
+        "abort": {
+            "reconfigure_successful": "Die Neukonfiguration war erfolgreich"
+        }
+    }
+}

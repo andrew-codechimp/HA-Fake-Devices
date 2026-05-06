@@ -19,7 +19,7 @@
                 } }
         },
         "error": {
-            "unknown": "Unknown error occurred."
+            "unknown": "Unknown error."
         },
         "abort": {
             "reconfigure_successful": "Reconfiguration was successful"
