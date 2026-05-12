@@ -23,7 +23,7 @@ documentation = "https://github.com/andrew-codechimp/HA-Fake-Devices"
 homepage = "https://github.com/andrew-codechimp/HA-Fake-Devices"
 repository = "https://github.com/andrew-codechimp/HA-Fake-Devices"
 "Bug Tracker" = "https://github.com/andrew-codechimp/HA-Fake-Devices/issues"
-Changelog = "https://github.com/andrew-codechimp/HA-Fake-Device/releases"
+Changelog = "https://github.com/andrew-codechimp/HA-Fake-Devices/releases"
 
 [dependency-groups]
 dev = [
