@@ -22,7 +22,7 @@ _Please :star: this repo if you find it useful_
 
 [![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=andrew-codechimp&repository=HA-Fake-Devices&category=Integration)
 
-This is a HACS custom integration, if the link does not work you will have to add this repository url via HACS custom repositories.
+Or search for Fake Devices via HACS.
 
 [commits-shield]: https://img.shields.io/github/commit-activity/y/andrew-codechimp/HA-Fake-Devices.svg?style=for-the-badge
 [commits]: https://github.com/andrew-codechimp/HA-Fake-Devices/commits/main
