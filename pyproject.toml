@@ -52,7 +52,6 @@ dev = [
     "pyotp",
     "pyqrcode",
     "pyserial",
-    "pyspeex-noise",
     "pytest-homeassistant-custom-component",
     "pyturbojpeg",
     "ruff",
