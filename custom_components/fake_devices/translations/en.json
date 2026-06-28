@@ -8,6 +8,17 @@
                     "manufacturer": "Manufacturer",
                     "model": "Model",
                     "serial_number": "Serial number"
+                },
+                "sections": {
+                    "advanced": {
+                        "name": "Advanced",
+                        "data": {
+                            "model_id": "Model ID",
+                            "hw_version": "Hardware",
+                            "sw_version": "Firmware",
+                            "url": "URL"
+                        }
+                    }
                 } },
             "reconfigure": {
                 "title": "Reconfigure Fake Device",
@@ -16,13 +27,30 @@
                     "manufacturer": "Manufacturer",
                     "model": "Model",
                     "serial_number": "Serial number"
+                },
+                "sections": {
+                    "advanced": {
+                        "name": "Advanced",
+                        "data": {
+                            "model_id": "Model ID",
+                            "hw_version": "Hardware",
+                            "sw_version": "Firmware",
+                            "url": "URL"
+                        }
+                    }
                 } }
         },
         "error": {
+            "invalid_url": "Invalid URL",
             "unknown": "Unknown error."
         },
         "abort": {
             "reconfigure_successful": "Reconfiguration was successful"
+        }
+    },
+    "exceptions": {
+        "invalid_url": {
+            "message": "Invalid URL."
         }
     }
 }

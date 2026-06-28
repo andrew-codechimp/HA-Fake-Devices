@@ -8,6 +8,17 @@
                     "manufacturer": "Hersteller",
                     "model": "Modell",
                     "serial_number": "Seriennummer"
+                },
+                "sections": {
+                    "advanced": {
+                        "name": "Erweitert",
+                        "data": {
+                            "model_id": "Modell ID",
+                            "hw_version": "Hardware",
+                            "sw_version": "Firmware",
+                            "url": "URL"
+                        }
+                    }
                 } },
             "reconfigure": {
                 "title": "Vorgetäuschtes Gerät neu konfigurieren",
@@ -16,13 +27,30 @@
                     "manufacturer": "Hersteller",
                     "model": "Modell",
                     "serial_number": "Seriennummer"
+                },
+                "sections": {
+                    "advanced": {
+                        "name": "Erweitert",
+                        "data": {
+                            "model_id": "Modell ID",
+                            "hw_version": "Hardware",
+                            "sw_version": "Firmware",
+                            "url": "URL"
+                        }
+                    }
                 } }
         },
         "error": {
+            "invalid_url": "Ungültige URL",
             "unknown": "Unbekannter Fehler."
         },
         "abort": {
             "reconfigure_successful": "Die Neukonfiguration war erfolgreich"
+        }
+    },
+    "exceptions": {
+        "invalid_url": {
+            "message": "Ungültige URL."
         }
     }
 }
