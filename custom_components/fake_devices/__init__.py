@@ -16,12 +16,19 @@ from homeassistant.const import (
     Platform,
 )
 from homeassistant.const import __version__ as HA_VERSION  # noqa: N812
+from homeassistant.exceptions import ConfigEntryError
 from homeassistant.helpers import device_registry as dr
 
+from .common import is_valid_url
 from .const import (
+    CONF_ADVANCED,
+    CONF_HW_VERSION,
     CONF_MANUFACTURER,
     CONF_MODEL,
+    CONF_MODEL_ID,
     CONF_SERIAL_NUMBER,
+    CONF_SW_VERION,
+    CONF_URL,
     DOMAIN,
     MIN_HA_VERSION,
 )
@@ -55,6 +62,13 @@ async def async_setup_entry(
     entry: ConfigEntry,
 ) -> bool:
     """Set up this integration using UI."""
+    url = entry.data.get(CONF_ADVANCED, {}).get(CONF_URL)
+
+    if url and not is_valid_url(url):
+        raise ConfigEntryError(
+            translation_domain=DOMAIN,
+            translation_key="invalid_url",
+        )
     device_registry = dr.async_get(hass)
     device_registry.async_get_or_create(
         config_entry_id=entry.entry_id,
@@ -63,6 +77,10 @@ async def async_setup_entry(
         manufacturer=entry.data.get(CONF_MANUFACTURER),
         model=entry.data.get(CONF_MODEL),
         serial_number=entry.data.get(CONF_SERIAL_NUMBER),
+        model_id=entry.data.get(CONF_ADVANCED, {}).get(CONF_MODEL_ID),
+        hw_version=entry.data.get(CONF_ADVANCED, {}).get(CONF_HW_VERSION),
+        sw_version=entry.data.get(CONF_ADVANCED, {}).get(CONF_SW_VERION),
+        configuration_url=url,
     )
 
     entry.async_on_unload(entry.add_update_listener(async_reload_entry))
