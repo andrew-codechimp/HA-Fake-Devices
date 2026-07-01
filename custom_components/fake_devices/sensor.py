@@ -8,7 +8,7 @@ from homeassistant.components.sensor import SensorEntity
 from homeassistant.const import CONF_NAME, EntityCategory
 from homeassistant.helpers.device_registry import DeviceInfo
 
-from .const import CONF_ENTITY_CATEGORY, CONF_ICON, CONF_STATE, DOMAIN, SUBENTRY_SENSOR
+from .const import CONF_ENTITY_CATEGORY, CONF_ICON, CONF_VALUE, DOMAIN, SUBENTRY_SENSOR
 
 if TYPE_CHECKING:
     from homeassistant.config_entries import ConfigEntry
@@ -31,7 +31,7 @@ async def async_setup_entry(
                 entry_id=config_entry.entry_id,
                 subentry_id=subentry.subentry_id,
                 name=subentry_data.get(CONF_NAME),
-                state=subentry_data.get(CONF_STATE),
+                state=subentry_data.get(CONF_VALUE),
                 entity_category=subentry_data.get(CONF_ENTITY_CATEGORY, "sensor"),
                 icon=subentry_data.get(CONF_ICON),
             )

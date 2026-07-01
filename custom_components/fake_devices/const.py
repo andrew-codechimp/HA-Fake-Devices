@@ -17,7 +17,7 @@ CONF_SW_VERION = "sw_version"
 CONF_URL = "url"
 CONF_INPUT_NUMBER_MIN = "input_number_min"
 CONF_INPUT_NUMBER_MAX = "input_number_max"
-CONF_STATE = "state"
+CONF_VALUE = "value"
 CONF_ENTITY_CATEGORY = "entity_category"
 CONF_ICON = "icon"
 

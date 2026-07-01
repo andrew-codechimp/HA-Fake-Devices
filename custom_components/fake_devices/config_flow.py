@@ -29,9 +29,9 @@ from .const import (
     CONF_MODEL,
     CONF_MODEL_ID,
     CONF_SERIAL_NUMBER,
-    CONF_STATE,
     CONF_SW_VERION,
     CONF_URL,
+    CONF_VALUE,
     DOMAIN,
     SUBENTRY_INPUT_NUMBER,
     SUBENTRY_SENSOR,
@@ -66,7 +66,7 @@ INPUT_NUMBER_SUBENTRY_SCHEMA = vol.Schema({
 
 SENSOR_SUBENTRY_SCHEMA = vol.Schema({
     vol.Required(CONF_NAME): str,
-    vol.Required(CONF_STATE): str,
+    vol.Required(CONF_VALUE): str,
     vol.Required(CONF_ENTITY_CATEGORY, default="sensor"): vol.In([
         "sensor",
         "diagnostic",

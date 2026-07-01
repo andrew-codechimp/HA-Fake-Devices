@@ -106,7 +106,7 @@
                     "title": "Add sensor",
                     "data": {
                         "name": "Name",
-                        "state": "State",
+                        "value": "Value",
                         "entity_category": "Entity Category",
                         "icon": "Icon"
                     },
@@ -118,7 +118,7 @@
                     "title": "Reconfigure sensor",
                     "data": {
                         "name": "Name",
-                        "state": "State",
+                        "value": "Value",
                         "entity_category": "Entity Category",
                         "icon": "Icon"
                     },
