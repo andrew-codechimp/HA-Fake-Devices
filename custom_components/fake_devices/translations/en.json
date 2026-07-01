@@ -52,5 +52,92 @@
         "invalid_url": {
             "message": "Invalid URL."
         }
+    },
+    "config_subentries": {
+        "input_number": {
+            "entry_type": "Input number",
+            "initiate_flow": {
+                "user": "Add input number",
+                "reconfigure": "Reconfigure input number"
+            },
+            "step": {
+                "user": {
+                    "title": "Add input number",
+                    "data": {
+                        "name": "Name",
+                        "min": "Minimum",
+                        "max": "Maximum",
+                        "entity_category": "Entity Category",
+                        "icon": "Icon"
+                    },
+                    "data_description": {
+                        "entity_category": "Type of entity"
+                    }
+                },
+                "reconfigure": {
+                    "title": "Reconfigure input number",
+                    "data": {
+                        "name": "Name",
+                        "min": "Minimum",
+                        "max": "Maximum",
+                        "entity_category": "Entity Category",
+                        "icon": "Icon"
+                    },
+                    "data_description": {
+                        "entity_category": "Type of entity"
+                    }
+                }
+            },
+            "error": {
+                "invalid_min_max": "Minimum must be less than or equal to maximum"
+            },
+            "abort": {
+                "reconfigure_successful": "Reconfiguration was successful"
+            }
+        },
+        "sensor": {
+            "entry_type": "Sensor",
+            "initiate_flow": {
+                "user": "Add sensor",
+                "reconfigure": "Reconfigure sensor"
+            },
+            "step": {
+                "user": {
+                    "title": "Add sensor",
+                    "data": {
+                        "name": "Name",
+                        "state": "State",
+                        "entity_category": "Entity Category",
+                        "icon": "Icon"
+                    },
+                    "data_description": {
+                        "entity_category": "Type of entity"
+                    }
+                },
+                "reconfigure": {
+                    "title": "Reconfigure sensor",
+                    "data": {
+                        "name": "Name",
+                        "state": "State",
+                        "entity_category": "Entity Category",
+                        "icon": "Icon"
+                    },
+                    "data_description": {
+                        "entity_category": "Type of entity"
+                    }
+                }
+            },
+            "abort": {
+                "reconfigure_successful": "Reconfiguration was successful"
+            }
+        }
+    },
+    "selector": {
+        "entity_category": {
+            "options": {
+                "sensor": "Sensor",
+                "diagnostic": "Diagnostic"
+            }
+        }
     }
 }
