@@ -5,6 +5,7 @@
 [![Downloads][download-latest-shield]]()
 [![HACS Installs][hacs-installs-shield]]()
 [![License][license-shield]](LICENSE)
+[![hacs][hacsbadge]][hacs]
 
 This integration creates fake devices in Home Assistant, useful for adding helper integrations like [Battery Notes](https://github.com/andrew-codechimp/ha-battery-notes) to real world non-smart devices that are not in Home Assistant, for example TV Remotes and Wall Clocks.
 
