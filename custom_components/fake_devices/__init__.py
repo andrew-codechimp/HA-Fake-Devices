@@ -1,5 +1,4 @@
-"""
-Custom integration to create fake devices in Home Assistant.
+"""Custom integration to create fake devices in Home Assistant.
 
 For more details about this integration, please refer to
 https://github.com/andrew-codechimp/ha-fake-devices
@@ -11,11 +10,12 @@ import logging
 from typing import TYPE_CHECKING
 
 from awesomeversion.awesomeversion import AwesomeVersion
+
 from homeassistant.const import (
     CONF_NAME,
     Platform,
+    __version__ as HA_VERSION,  # noqa: N812
 )
-from homeassistant.const import __version__ as HA_VERSION  # noqa: N812
 from homeassistant.exceptions import ConfigEntryError
 from homeassistant.helpers import device_registry as dr
 
