@@ -11,7 +11,7 @@
                 },
                 "sections": {
                     "advanced": {
-                        "name": "Erweitert",
+                        "name": "Zusätzliche Informationen",
                         "data": {
                             "model_id": "Modell ID",
                             "hw_version": "Hardware",
@@ -30,7 +30,7 @@
                 },
                 "sections": {
                     "advanced": {
-                        "name": "Erweitert",
+                        "name": "Zusätzliche Informationen",
                         "data": {
                             "model_id": "Modell ID",
                             "hw_version": "Hardware",
