@@ -17,6 +17,9 @@
                             "hw_version": "Hardware",
                             "sw_version": "Firmware",
                             "url": "URL"
+                        },
+                        "data_description": {
+                            "url": "Geben Sie eine gültige URL ein, um auf der Geräteseite einen Visit-Link hinzuzufügen."
                         }
                     }
                 } },
@@ -36,6 +39,9 @@
                             "hw_version": "Hardware",
                             "sw_version": "Firmware",
                             "url": "URL"
+                        },
+                        "data_description": {
+                            "url": "Geben Sie eine gültige URL ein, um auf der Geräteseite einen Visit-Link hinzuzufügen."
                         }
                     }
                 } }
