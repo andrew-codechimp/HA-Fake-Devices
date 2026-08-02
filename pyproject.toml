@@ -115,6 +115,7 @@ ignore = [
   "TD003",  # Missing issue link TODO
   "TRY400",  # Use `logging.exception` instead of `logging.error`
   "PLR0913", # Too many parameters
+  "CPY001",  # Missing copyright notice at top of file
 
   # TODO: Temporary ignores, to review
   "ANN001",  # Missing type annotation for function argument

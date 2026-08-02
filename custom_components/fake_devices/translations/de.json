@@ -11,12 +11,15 @@
                 },
                 "sections": {
                     "advanced": {
-                        "name": "Erweitert",
+                        "name": "Zusätzliche Informationen",
                         "data": {
                             "model_id": "Modell ID",
                             "hw_version": "Hardware",
                             "sw_version": "Firmware",
                             "url": "URL"
+                        },
+                        "data_description": {
+                            "url": "Geben Sie eine gültige URL ein, um auf der Geräteseite einen Visit-Link hinzuzufügen."
                         }
                     }
                 } },
@@ -30,12 +33,15 @@
                 },
                 "sections": {
                     "advanced": {
-                        "name": "Erweitert",
+                        "name": "Zusätzliche Informationen",
                         "data": {
                             "model_id": "Modell ID",
                             "hw_version": "Hardware",
                             "sw_version": "Firmware",
                             "url": "URL"
+                        },
+                        "data_description": {
+                            "url": "Geben Sie eine gültige URL ein, um auf der Geräteseite einen Visit-Link hinzuzufügen."
                         }
                     }
                 } }

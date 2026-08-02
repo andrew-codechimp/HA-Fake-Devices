@@ -11,12 +11,15 @@
                 },
                 "sections": {
                     "advanced": {
-                        "name": "Advanced",
+                        "name": "Additional information",
                         "data": {
                             "model_id": "Model ID",
                             "hw_version": "Hardware",
                             "sw_version": "Firmware",
                             "url": "URL"
+                        },
+                        "data_description": {
+                            "url": "Enter a valid URL to add a Visit link to the device page."
                         }
                     }
                 } },
@@ -30,12 +33,15 @@
                 },
                 "sections": {
                     "advanced": {
-                        "name": "Advanced",
+                        "name": "Additional information",
                         "data": {
                             "model_id": "Model ID",
                             "hw_version": "Hardware",
                             "sw_version": "Firmware",
                             "url": "URL"
+                        },
+                        "data_description": {
+                            "url": "Enter a valid URL to add a Visit link to the device page."
                         }
                     }
                 } }
