@@ -6,6 +6,7 @@ from typing import Any
 
 import voluptuous as vol
 
+from homeassistant.components.sensor import DEVICE_CLASS_UNITS
 from homeassistant.config_entries import (
     ConfigEntry,
     ConfigFlow,
@@ -13,10 +14,15 @@ from homeassistant.config_entries import (
     ConfigSubentryFlow,
     SubentryFlowResult,
 )
-from homeassistant.const import CONF_NAME
+from homeassistant.const import CONF_NAME, CONF_UNIT_OF_MEASUREMENT
 from homeassistant.core import callback
 from homeassistant.data_entry_flow import section
-from homeassistant.helpers.selector import IconSelector
+from homeassistant.helpers.selector import (
+    IconSelector,
+    SelectSelector,
+    SelectSelectorConfig,
+    SelectSelectorMode,
+)
 
 from .common import is_valid_url
 from .const import (
@@ -68,6 +74,22 @@ INPUT_NUMBER_SUBENTRY_SCHEMA = vol.Schema({
 SENSOR_SUBENTRY_SCHEMA = vol.Schema({
     vol.Required(CONF_NAME): str,
     vol.Required(CONF_STATE): str,
+    vol.Optional(CONF_UNIT_OF_MEASUREMENT): SelectSelector(
+        SelectSelectorConfig(
+            options=list(
+                {
+                    str(unit)
+                    for units in DEVICE_CLASS_UNITS.values()
+                    for unit in units
+                    if unit is not None
+                }
+            ),
+            mode=SelectSelectorMode.DROPDOWN,
+            translation_key="sensor_unit_of_measurement",
+            custom_value=True,
+            sort=True,
+        )
+    ),
     vol.Required(CONF_ENTITY_CATEGORY, default="sensor"): vol.In([
         "sensor",
         "diagnostic",
@@ -209,6 +231,7 @@ class InputNumberSubentryFlowHandler(ConfigSubentryFlow):
                     self._get_reconfigure_subentry(),
                     title=user_input[CONF_NAME],
                     data=user_input,
+                    reason="reconfigure_successful",
                 )
 
         reconfigure_subentry = self._get_reconfigure_subentry()
@@ -253,6 +276,7 @@ class SensorSubentryFlowHandler(ConfigSubentryFlow):
                 self._get_reconfigure_subentry(),
                 title=user_input[CONF_NAME],
                 data=user_input,
+                reason="reconfigure_successful",
             )
 
         reconfigure_subentry = self._get_reconfigure_subentry()

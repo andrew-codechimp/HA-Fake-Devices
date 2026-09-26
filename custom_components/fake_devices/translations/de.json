@@ -71,8 +71,8 @@
                     "title": "Eingabezahl hinzufügen",
                     "data": {
                         "name": "Name",
-                        "min": "Minimum",
-                        "max": "Maximum",
+                        "min": "Mindestwert",
+                        "max": "Höchstwert",
                         "entity_category": "Entitätskategorie",
                         "icon": "Symbol"
                     },
@@ -84,8 +84,8 @@
                     "title": "Eingabezahl neu konfigurieren",
                     "data": {
                         "name": "Name",
-                        "min": "Minimum",
-                        "max": "Maximum",
+                        "min": "Mindestwert",
+                        "max": "Höchstwert",
                         "entity_category": "Entitätskategorie",
                         "icon": "Symbol"
                     },
@@ -95,7 +95,7 @@
                 }
             },
             "error": {
-                "invalid_min_max": "Minimum muss kleiner oder gleich Maximum sein"
+                "invalid_min_max": "Der Mindestwert muss kleiner oder gleich dem Höchstwert sein"
             },
             "abort": {
                 "reconfigure_successful": "Die Neukonfiguration war erfolgreich"
@@ -112,24 +112,29 @@
                     "title": "Sensor hinzufügen",
                     "data": {
                         "name": "Name",
-                        "state": "State",
+                        "state": "Zustand",
+                        "unit_of_measurement": "Maßeinheit",
                         "entity_category": "Entitätskategorie",
                         "icon": "Symbol"
                     },
                     "data_description": {
-                        "entity_category": "Typ der Entität"
-                    }
+                        "entity_category": "Typ der Entität.",
+                        "state": "Ein statischer Wert."
+                    },
+                    "description": "Fügen Sie einen statischen Sensor zum Fake-Gerät hinzu."
                 },
                 "reconfigure": {
                     "title": "Sensor neu konfigurieren",
                     "data": {
                         "name": "Name",
-                        "state": "State",
+                        "state": "Zustand",
+                        "unit_of_measurement": "Maßeinheit",
                         "entity_category": "Entitätskategorie",
                         "icon": "Symbol"
                     },
                     "data_description": {
-                        "entity_category": "Typ der Entität"
+                        "entity_category": "Typ der Entität.",
+                        "state": "Ein statischer Wert."
                     }
                 }
             },
@@ -144,6 +149,11 @@
                 "sensor": "Sensor",
                 "diagnostic": "Diagnostik"
             }
+        }
+    },
+    "sensor_unit_of_measurement": {
+        "options": {
+            "none": "Keine Maßeinheit"
         }
     }
 }

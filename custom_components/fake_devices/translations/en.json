@@ -113,23 +113,28 @@
                     "data": {
                         "name": "Name",
                         "state": "State",
+                        "unit_of_measurement": "Unit of measurement",
                         "entity_category": "Entity Category",
                         "icon": "Icon"
                     },
                     "data_description": {
-                        "entity_category": "Type of entity"
-                    }
+                        "state": "A static value.",
+                        "entity_category": "Type of entity."
+                    },
+                    "description": "Add a static sensor to the fake device."
                 },
                 "reconfigure": {
                     "title": "Reconfigure sensor",
                     "data": {
                         "name": "Name",
                         "state": "State",
+                        "unit_of_measurement": "Unit of measurement",
                         "entity_category": "Entity Category",
                         "icon": "Icon"
                     },
                     "data_description": {
-                        "entity_category": "Type of entity"
+                        "state": "A static value.",
+                        "entity_category": "Type of entity."
                     }
                 }
             },
@@ -144,6 +149,11 @@
                 "sensor": "Sensor",
                 "diagnostic": "Diagnostic"
             }
+        }
+    },
+    "sensor_unit_of_measurement": {
+        "options": {
+            "none": "No unit of measurement"
         }
     }
 }
