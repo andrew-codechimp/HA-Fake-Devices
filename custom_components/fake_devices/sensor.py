@@ -28,11 +28,13 @@ async def async_setup_entry(
     async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Set up sensor entities from subentries."""
-    async_add_entities([
-        FakeStaticSensor(config_entry, subentry.subentry_id)
-        for subentry in config_entry.subentries.values()
-        if subentry.subentry_type == SUBENTRY_STATIC_SENSOR
-    ])
+    async_add_entities(
+        [
+            FakeStaticSensor(config_entry, subentry.subentry_id)
+            for subentry in config_entry.subentries.values()
+            if subentry.subentry_type == SUBENTRY_STATIC_SENSOR
+        ]
+    )
 
 
 class FakeStaticSensor(SensorEntity):

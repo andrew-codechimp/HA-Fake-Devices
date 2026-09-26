@@ -41,45 +41,55 @@ from .const import (
     SUBENTRY_STATIC_SENSOR,
 )
 
-USER_SCHEMA = vol.Schema({
-    vol.Required(CONF_NAME): str,
-    vol.Optional(CONF_MANUFACTURER): str,
-    vol.Optional(CONF_MODEL): str,
-    vol.Optional(CONF_SERIAL_NUMBER): str,
-    vol.Required(CONF_ADVANCED): section(
-        vol.Schema({
-            vol.Optional(CONF_MODEL_ID): str,
-            vol.Optional(CONF_HW_VERSION): str,
-            vol.Optional(CONF_SW_VERION): str,
-            vol.Optional(CONF_URL): str,
-        }),
-        {"collapsed": True},
-    ),
-})
+USER_SCHEMA = vol.Schema(
+    {
+        vol.Required(CONF_NAME): str,
+        vol.Optional(CONF_MANUFACTURER): str,
+        vol.Optional(CONF_MODEL): str,
+        vol.Optional(CONF_SERIAL_NUMBER): str,
+        vol.Required(CONF_ADVANCED): section(
+            vol.Schema(
+                {
+                    vol.Optional(CONF_MODEL_ID): str,
+                    vol.Optional(CONF_HW_VERSION): str,
+                    vol.Optional(CONF_SW_VERION): str,
+                    vol.Optional(CONF_URL): str,
+                }
+            ),
+            {"collapsed": True},
+        ),
+    }
+)
 
-STATIC_SENSOR_SUBENTRY_SCHEMA = vol.Schema({
-    vol.Required(CONF_NAME): str,
-    vol.Required(CONF_STATE): str,
-    vol.Optional(CONF_ICON): IconSelector(),
-    vol.Optional(CONF_UNIT_OF_MEASUREMENT): SelectSelector(
-        SelectSelectorConfig(
-            options=list({
-                str(unit)
-                for units in DEVICE_CLASS_UNITS.values()
-                for unit in units
-                if unit is not None
-            }),
-            mode=SelectSelectorMode.DROPDOWN,
-            translation_key="sensor_unit_of_measurement",
-            custom_value=True,
-            sort=True,
-        )
-    ),
-    vol.Required(CONF_ENTITY_CATEGORY, default="sensor"): vol.In([
-        "sensor",
-        "diagnostic",
-    ]),
-})
+STATIC_SENSOR_SUBENTRY_SCHEMA = vol.Schema(
+    {
+        vol.Required(CONF_NAME): str,
+        vol.Required(CONF_STATE): str,
+        vol.Optional(CONF_ICON): IconSelector(),
+        vol.Optional(CONF_UNIT_OF_MEASUREMENT): SelectSelector(
+            SelectSelectorConfig(
+                options=list(
+                    {
+                        str(unit)
+                        for units in DEVICE_CLASS_UNITS.values()
+                        for unit in units
+                        if unit is not None
+                    }
+                ),
+                mode=SelectSelectorMode.DROPDOWN,
+                translation_key="sensor_unit_of_measurement",
+                custom_value=True,
+                sort=True,
+            )
+        ),
+        vol.Required(CONF_ENTITY_CATEGORY, default="sensor"): vol.In(
+            [
+                "sensor",
+                "diagnostic",
+            ]
+        ),
+    }
+)
 
 
 class FakeDevicesFlowHandler(ConfigFlow, domain=DOMAIN):
