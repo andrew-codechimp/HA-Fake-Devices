@@ -60,15 +60,15 @@
         }
     },
     "config_subentries": {
-        "sensor": {
-            "entry_type": "Sensor",
+        "static_sensor": {
+            "entry_type": "Statischer Sensor",
             "initiate_flow": {
-                "user": "Sensor hinzufügen",
-                "reconfigure": "Sensor neu konfigurieren"
+                "user": "Statischen Sensor hinzufügen",
+                "reconfigure": "Statischen Sensor neu konfigurieren"
             },
             "step": {
                 "user": {
-                    "title": "Sensor hinzufügen",
+                    "title": "Statischen Sensor hinzufügen",
                     "data": {
                         "name": "Name",
                         "state": "Zustand",
@@ -79,11 +79,10 @@
                     "data_description": {
                         "unit_of_measurement": "Legt fest, welche Maßeinheit der Sensor verwendet, falls eine angegeben ist.",
                         "state": "Ein statischer Wert."
-                    },
-                    "description": "Fügen Sie einen statischen Sensor zum Fake-Gerät hinzu."
+                    }
                 },
                 "reconfigure": {
-                    "title": "Sensor neu konfigurieren",
+                    "title": "Statischen Sensor neu konfigurieren",
                     "data": {
                         "name": "Name",
                         "state": "Zustand",

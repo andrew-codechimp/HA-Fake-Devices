@@ -60,15 +60,15 @@
         }
     },
     "config_subentries": {
-        "sensor": {
-            "entry_type": "Sensor",
+        "static_sensor": {
+            "entry_type": "Static sensor",
             "initiate_flow": {
-                "user": "Add sensor",
-                "reconfigure": "Reconfigure sensor"
+                "user": "Add static sensor",
+                "reconfigure": "Reconfigure static sensor"
             },
             "step": {
                 "user": {
-                    "title": "Add sensor",
+                    "title": "Add static sensor",
                     "data": {
                         "name": "Name",
                         "state": "State",
@@ -79,11 +79,10 @@
                     "data_description": {
                         "unit_of_measurement": "Defines the unit of measurement for the sensor, if any.",
                         "state": "A static value."
-                    },
-                    "description": "Add a static sensor to the fake device."
+                    }
                 },
                 "reconfigure": {
-                    "title": "Reconfigure sensor",
+                    "title": "Reconfigure static sensor",
                     "data": {
                         "name": "Name",
                         "state": "State",

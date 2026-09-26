@@ -8,7 +8,13 @@ from homeassistant.components.sensor import SensorEntity
 from homeassistant.const import CONF_NAME, CONF_UNIT_OF_MEASUREMENT, EntityCategory
 from homeassistant.helpers.device_registry import DeviceInfo
 
-from .const import CONF_ENTITY_CATEGORY, CONF_ICON, CONF_STATE, DOMAIN, SUBENTRY_SENSOR
+from .const import (
+    CONF_ENTITY_CATEGORY,
+    CONF_ICON,
+    CONF_STATE,
+    DOMAIN,
+    SUBENTRY_STATIC_SENSOR,
+)
 
 if TYPE_CHECKING:
     from homeassistant.config_entries import ConfigEntry
@@ -22,17 +28,15 @@ async def async_setup_entry(
     async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Set up sensor entities from subentries."""
-    async_add_entities(
-        [
-            FakeSensor(config_entry, subentry.subentry_id)
-            for subentry in config_entry.subentries.values()
-            if subentry.subentry_type == SUBENTRY_SENSOR
-        ]
-    )
+    async_add_entities([
+        FakeStaticSensor(config_entry, subentry.subentry_id)
+        for subentry in config_entry.subentries.values()
+        if subentry.subentry_type == SUBENTRY_STATIC_SENSOR
+    ])
 
 
-class FakeSensor(SensorEntity):
-    """Representation of a fake sensor."""
+class FakeStaticSensor(SensorEntity):
+    """Representation of a fake static sensor."""
 
     _attr_has_entity_name = True
 

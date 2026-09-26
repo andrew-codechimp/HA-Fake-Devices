@@ -19,4 +19,4 @@ CONF_STATE = "state"
 CONF_ENTITY_CATEGORY = "entity_category"
 CONF_ICON = "icon"
 
-SUBENTRY_SENSOR = "sensor"
+SUBENTRY_STATIC_SENSOR = "static_sensor"

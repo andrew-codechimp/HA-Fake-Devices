@@ -38,58 +38,48 @@ from .const import (
     CONF_SW_VERION,
     CONF_URL,
     DOMAIN,
-    SUBENTRY_SENSOR,
+    SUBENTRY_STATIC_SENSOR,
 )
 
-USER_SCHEMA = vol.Schema(
-    {
-        vol.Required(CONF_NAME): str,
-        vol.Optional(CONF_MANUFACTURER): str,
-        vol.Optional(CONF_MODEL): str,
-        vol.Optional(CONF_SERIAL_NUMBER): str,
-        vol.Required(CONF_ADVANCED): section(
-            vol.Schema(
-                {
-                    vol.Optional(CONF_MODEL_ID): str,
-                    vol.Optional(CONF_HW_VERSION): str,
-                    vol.Optional(CONF_SW_VERION): str,
-                    vol.Optional(CONF_URL): str,
-                }
-            ),
-            {"collapsed": True},
-        ),
-    }
-)
+USER_SCHEMA = vol.Schema({
+    vol.Required(CONF_NAME): str,
+    vol.Optional(CONF_MANUFACTURER): str,
+    vol.Optional(CONF_MODEL): str,
+    vol.Optional(CONF_SERIAL_NUMBER): str,
+    vol.Required(CONF_ADVANCED): section(
+        vol.Schema({
+            vol.Optional(CONF_MODEL_ID): str,
+            vol.Optional(CONF_HW_VERSION): str,
+            vol.Optional(CONF_SW_VERION): str,
+            vol.Optional(CONF_URL): str,
+        }),
+        {"collapsed": True},
+    ),
+})
 
-SENSOR_SUBENTRY_SCHEMA = vol.Schema(
-    {
-        vol.Required(CONF_NAME): str,
-        vol.Required(CONF_STATE): str,
-        vol.Optional(CONF_ICON): IconSelector(),
-        vol.Optional(CONF_UNIT_OF_MEASUREMENT): SelectSelector(
-            SelectSelectorConfig(
-                options=list(
-                    {
-                        str(unit)
-                        for units in DEVICE_CLASS_UNITS.values()
-                        for unit in units
-                        if unit is not None
-                    }
-                ),
-                mode=SelectSelectorMode.DROPDOWN,
-                translation_key="sensor_unit_of_measurement",
-                custom_value=True,
-                sort=True,
-            )
-        ),
-        vol.Required(CONF_ENTITY_CATEGORY, default="sensor"): vol.In(
-            [
-                "sensor",
-                "diagnostic",
-            ]
-        ),
-    }
-)
+STATIC_SENSOR_SUBENTRY_SCHEMA = vol.Schema({
+    vol.Required(CONF_NAME): str,
+    vol.Required(CONF_STATE): str,
+    vol.Optional(CONF_ICON): IconSelector(),
+    vol.Optional(CONF_UNIT_OF_MEASUREMENT): SelectSelector(
+        SelectSelectorConfig(
+            options=list({
+                str(unit)
+                for units in DEVICE_CLASS_UNITS.values()
+                for unit in units
+                if unit is not None
+            }),
+            mode=SelectSelectorMode.DROPDOWN,
+            translation_key="sensor_unit_of_measurement",
+            custom_value=True,
+            sort=True,
+        )
+    ),
+    vol.Required(CONF_ENTITY_CATEGORY, default="sensor"): vol.In([
+        "sensor",
+        "diagnostic",
+    ]),
+})
 
 
 class FakeDevicesFlowHandler(ConfigFlow, domain=DOMAIN):
@@ -104,7 +94,7 @@ class FakeDevicesFlowHandler(ConfigFlow, domain=DOMAIN):
     ) -> dict[str, type[ConfigSubentryFlow]]:
         """Return subentries supported by this handler."""
         return {
-            SUBENTRY_SENSOR: SensorSubentryFlowHandler,
+            SUBENTRY_STATIC_SENSOR: StaticSensorSubentryFlowHandler,
         }
 
     async def check_url(self, url: str) -> dict[str, str]:
@@ -179,13 +169,13 @@ class FakeDevicesFlowHandler(ConfigFlow, domain=DOMAIN):
         )
 
 
-class SensorSubentryFlowHandler(ConfigSubentryFlow):
-    """Handle subentry flow for adding a sensor."""
+class StaticSensorSubentryFlowHandler(ConfigSubentryFlow):
+    """Handle subentry flow for adding a static sensor."""
 
     async def async_step_user(
         self, user_input: dict[str, Any] | None = None
     ) -> SubentryFlowResult:
-        """Add a sensor subentry."""
+        """Add a static sensor subentry."""
         if user_input is not None:
             return self.async_create_entry(
                 title=user_input[CONF_NAME],
@@ -195,7 +185,7 @@ class SensorSubentryFlowHandler(ConfigSubentryFlow):
         return self.async_show_form(
             step_id="user",
             data_schema=self.add_suggested_values_to_schema(
-                SENSOR_SUBENTRY_SCHEMA,
+                STATIC_SENSOR_SUBENTRY_SCHEMA,
                 user_input,
             ),
         )
@@ -203,7 +193,7 @@ class SensorSubentryFlowHandler(ConfigSubentryFlow):
     async def async_step_reconfigure(
         self, user_input: dict[str, Any] | None = None
     ) -> SubentryFlowResult:
-        """Reconfigure a sensor subentry."""
+        """Reconfigure a static sensor subentry."""
         if user_input is not None:
             self.hass.config_entries.async_update_subentry(
                 entry=self._get_entry(),
@@ -217,7 +207,7 @@ class SensorSubentryFlowHandler(ConfigSubentryFlow):
         return self.async_show_form(
             step_id="reconfigure",
             data_schema=self.add_suggested_values_to_schema(
-                SENSOR_SUBENTRY_SCHEMA,
+                STATIC_SENSOR_SUBENTRY_SCHEMA,
                 reconfigure_subentry.data if user_input is None else user_input,
             ),
         )
