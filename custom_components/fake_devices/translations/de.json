@@ -60,47 +60,6 @@
         }
     },
     "config_subentries": {
-        "input_number": {
-            "entry_type": "Eingabezahl",
-            "initiate_flow": {
-                "user": "Eingabezahl hinzufügen",
-                "reconfigure": "Eingabezahl neu konfigurieren"
-            },
-            "step": {
-                "user": {
-                    "title": "Eingabezahl hinzufügen",
-                    "data": {
-                        "name": "Name",
-                        "min": "Mindestwert",
-                        "max": "Höchstwert",
-                        "entity_category": "Entitätskategorie",
-                        "icon": "Symbol"
-                    },
-                    "data_description": {
-                        "entity_category": "Typ der Entität"
-                    }
-                },
-                "reconfigure": {
-                    "title": "Eingabezahl neu konfigurieren",
-                    "data": {
-                        "name": "Name",
-                        "min": "Mindestwert",
-                        "max": "Höchstwert",
-                        "entity_category": "Entitätskategorie",
-                        "icon": "Symbol"
-                    },
-                    "data_description": {
-                        "entity_category": "Typ der Entität"
-                    }
-                }
-            },
-            "error": {
-                "invalid_min_max": "Der Mindestwert muss kleiner oder gleich dem Höchstwert sein"
-            },
-            "abort": {
-                "reconfigure_successful": "Die Neukonfiguration war erfolgreich"
-            }
-        },
         "sensor": {
             "entry_type": "Sensor",
             "initiate_flow": {

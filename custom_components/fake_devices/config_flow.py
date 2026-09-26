@@ -30,8 +30,6 @@ from .const import (
     CONF_ENTITY_CATEGORY,
     CONF_HW_VERSION,
     CONF_ICON,
-    CONF_INPUT_NUMBER_MAX,
-    CONF_INPUT_NUMBER_MIN,
     CONF_MANUFACTURER,
     CONF_MODEL,
     CONF_MODEL_ID,
@@ -40,62 +38,58 @@ from .const import (
     CONF_SW_VERION,
     CONF_URL,
     DOMAIN,
-    SUBENTRY_INPUT_NUMBER,
     SUBENTRY_SENSOR,
 )
 
-USER_SCHEMA = vol.Schema({
-    vol.Required(CONF_NAME): str,
-    vol.Optional(CONF_MANUFACTURER): str,
-    vol.Optional(CONF_MODEL): str,
-    vol.Optional(CONF_SERIAL_NUMBER): str,
-    vol.Required(CONF_ADVANCED): section(
-        vol.Schema({
-            vol.Optional(CONF_MODEL_ID): str,
-            vol.Optional(CONF_HW_VERSION): str,
-            vol.Optional(CONF_SW_VERION): str,
-            vol.Optional(CONF_URL): str,
-        }),
-        {"collapsed": True},
-    ),
-})
-
-INPUT_NUMBER_SUBENTRY_SCHEMA = vol.Schema({
-    vol.Required(CONF_NAME): str,
-    vol.Required(CONF_INPUT_NUMBER_MIN): vol.Coerce(float),
-    vol.Required(CONF_INPUT_NUMBER_MAX, default=100): vol.Coerce(float),
-    vol.Required(CONF_ENTITY_CATEGORY, default="sensor"): vol.In([
-        "sensor",
-        "diagnostic",
-    ]),
-    vol.Optional(CONF_ICON): IconSelector(),
-})
-
-SENSOR_SUBENTRY_SCHEMA = vol.Schema({
-    vol.Required(CONF_NAME): str,
-    vol.Required(CONF_STATE): str,
-    vol.Optional(CONF_UNIT_OF_MEASUREMENT): SelectSelector(
-        SelectSelectorConfig(
-            options=list(
+USER_SCHEMA = vol.Schema(
+    {
+        vol.Required(CONF_NAME): str,
+        vol.Optional(CONF_MANUFACTURER): str,
+        vol.Optional(CONF_MODEL): str,
+        vol.Optional(CONF_SERIAL_NUMBER): str,
+        vol.Required(CONF_ADVANCED): section(
+            vol.Schema(
                 {
-                    str(unit)
-                    for units in DEVICE_CLASS_UNITS.values()
-                    for unit in units
-                    if unit is not None
+                    vol.Optional(CONF_MODEL_ID): str,
+                    vol.Optional(CONF_HW_VERSION): str,
+                    vol.Optional(CONF_SW_VERION): str,
+                    vol.Optional(CONF_URL): str,
                 }
             ),
-            mode=SelectSelectorMode.DROPDOWN,
-            translation_key="sensor_unit_of_measurement",
-            custom_value=True,
-            sort=True,
-        )
-    ),
-    vol.Required(CONF_ENTITY_CATEGORY, default="sensor"): vol.In([
-        "sensor",
-        "diagnostic",
-    ]),
-    vol.Optional(CONF_ICON): IconSelector(),
-})
+            {"collapsed": True},
+        ),
+    }
+)
+
+SENSOR_SUBENTRY_SCHEMA = vol.Schema(
+    {
+        vol.Required(CONF_NAME): str,
+        vol.Required(CONF_STATE): str,
+        vol.Optional(CONF_ICON): IconSelector(),
+        vol.Optional(CONF_UNIT_OF_MEASUREMENT): SelectSelector(
+            SelectSelectorConfig(
+                options=list(
+                    {
+                        str(unit)
+                        for units in DEVICE_CLASS_UNITS.values()
+                        for unit in units
+                        if unit is not None
+                    }
+                ),
+                mode=SelectSelectorMode.DROPDOWN,
+                translation_key="sensor_unit_of_measurement",
+                custom_value=True,
+                sort=True,
+            )
+        ),
+        vol.Required(CONF_ENTITY_CATEGORY, default="sensor"): vol.In(
+            [
+                "sensor",
+                "diagnostic",
+            ]
+        ),
+    }
+)
 
 
 class FakeDevicesFlowHandler(ConfigFlow, domain=DOMAIN):
@@ -110,7 +104,6 @@ class FakeDevicesFlowHandler(ConfigFlow, domain=DOMAIN):
     ) -> dict[str, type[ConfigSubentryFlow]]:
         """Return subentries supported by this handler."""
         return {
-            SUBENTRY_INPUT_NUMBER: InputNumberSubentryFlowHandler,
             SUBENTRY_SENSOR: SensorSubentryFlowHandler,
         }
 
@@ -186,65 +179,6 @@ class FakeDevicesFlowHandler(ConfigFlow, domain=DOMAIN):
         )
 
 
-class InputNumberSubentryFlowHandler(ConfigSubentryFlow):
-    """Handle subentry flow for adding an input number."""
-
-    @staticmethod
-    def _validate_min_max(data: dict[str, Any]) -> dict[str, str]:
-        """Validate input number range."""
-        if data[CONF_INPUT_NUMBER_MIN] > data[CONF_INPUT_NUMBER_MAX]:
-            return {"base": "invalid_min_max"}
-        return {}
-
-    async def async_step_user(
-        self, user_input: dict[str, Any] | None = None
-    ) -> SubentryFlowResult:
-        """Add a input number subentry."""
-        errors: dict[str, str] = {}
-        if user_input is not None:
-            errors = self._validate_min_max(user_input)
-            if not errors:
-                return self.async_create_entry(
-                    title=user_input[CONF_NAME],
-                    data=user_input,
-                )
-
-        return self.async_show_form(
-            step_id="user",
-            data_schema=self.add_suggested_values_to_schema(
-                INPUT_NUMBER_SUBENTRY_SCHEMA,
-                user_input,
-            ),
-            errors=errors,
-        )
-
-    async def async_step_reconfigure(
-        self, user_input: dict[str, Any] | None = None
-    ) -> SubentryFlowResult:
-        """Reconfigure an input number subentry."""
-        errors: dict[str, str] = {}
-        if user_input is not None:
-            errors = self._validate_min_max(user_input)
-            if not errors:
-                return self.async_update_and_abort(
-                    self._get_entry(),
-                    self._get_reconfigure_subentry(),
-                    title=user_input[CONF_NAME],
-                    data=user_input,
-                    reason="reconfigure_successful",
-                )
-
-        reconfigure_subentry = self._get_reconfigure_subentry()
-        return self.async_show_form(
-            step_id="reconfigure",
-            data_schema=self.add_suggested_values_to_schema(
-                INPUT_NUMBER_SUBENTRY_SCHEMA,
-                reconfigure_subentry.data if user_input is None else user_input,
-            ),
-            errors=errors,
-        )
-
-
 class SensorSubentryFlowHandler(ConfigSubentryFlow):
     """Handle subentry flow for adding a sensor."""
 
@@ -271,13 +205,13 @@ class SensorSubentryFlowHandler(ConfigSubentryFlow):
     ) -> SubentryFlowResult:
         """Reconfigure a sensor subentry."""
         if user_input is not None:
-            return self.async_update_and_abort(
-                self._get_entry(),
-                self._get_reconfigure_subentry(),
+            self.hass.config_entries.async_update_subentry(
+                entry=self._get_entry(),
+                subentry=self._get_reconfigure_subentry(),
                 title=user_input[CONF_NAME],
                 data=user_input,
-                reason="reconfigure_successful",
             )
+            return self.async_abort(reason="reconfigure_successful")
 
         reconfigure_subentry = self._get_reconfigure_subentry()
         return self.async_show_form(
