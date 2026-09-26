@@ -118,8 +118,8 @@
                         "icon": "Icon"
                     },
                     "data_description": {
-                        "state": "A static value.",
-                        "entity_category": "Type of entity."
+                        "unit_of_measurement": "Defines the unit of measurement for the sensor, if any.",
+                        "state": "A static value."
                     },
                     "description": "Add a static sensor to the fake device."
                 },
@@ -133,8 +133,8 @@
                         "icon": "Icon"
                     },
                     "data_description": {
-                        "state": "A static value.",
-                        "entity_category": "Type of entity."
+                        "unit_of_measurement": "Defines the unit of measurement for the sensor, if any.",
+                        "state": "A static value."
                     }
                 }
             },

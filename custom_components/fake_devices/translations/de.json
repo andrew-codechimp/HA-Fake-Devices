@@ -118,7 +118,7 @@
                         "icon": "Symbol"
                     },
                     "data_description": {
-                        "entity_category": "Typ der Entität.",
+                        "unit_of_measurement": "Legt fest, welche Maßeinheit der Sensor verwendet, falls eine angegeben ist.",
                         "state": "Ein statischer Wert."
                     },
                     "description": "Fügen Sie einen statischen Sensor zum Fake-Gerät hinzu."
@@ -133,7 +133,7 @@
                         "icon": "Symbol"
                     },
                     "data_description": {
-                        "entity_category": "Typ der Entität.",
+                        "unit_of_measurement": "Legt fest, welche Maßeinheit der Sensor verwendet, falls eine angegeben ist.",
                         "state": "Ein statischer Wert."
                     }
                 }
