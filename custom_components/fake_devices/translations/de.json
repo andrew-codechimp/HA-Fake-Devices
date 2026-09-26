@@ -112,7 +112,7 @@
                     "title": "Sensor hinzufügen",
                     "data": {
                         "name": "Name",
-                        "value": "Value",
+                        "state": "State",
                         "entity_category": "Entitätskategorie",
                         "icon": "Symbol"
                     },
@@ -124,8 +124,7 @@
                     "title": "Sensor neu konfigurieren",
                     "data": {
                         "name": "Name",
-                        "state": "Status",
-                        "value": "Value",
+                        "state": "State",
                         "entity_category": "Entitätskategorie",
                         "icon": "Symbol"
                     },

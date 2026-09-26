@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Any
 
 import voluptuous as vol
+
 from homeassistant.config_entries import (
     ConfigEntry,
     ConfigFlow,
@@ -32,7 +33,6 @@ from .const import (
     CONF_STATE,
     CONF_SW_VERION,
     CONF_URL,
-    CONF_VALUE,
     DOMAIN,
     SUBENTRY_INPUT_NUMBER,
     SUBENTRY_SENSOR,

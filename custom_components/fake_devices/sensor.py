@@ -29,9 +29,9 @@ async def async_setup_entry(
             subentry_data = subentry.data
             entity = FakeSensor(
                 entry_id=config_entry.entry_id,
+                config_entry=config_entry,
                 subentry_id=subentry.subentry_id,
                 name=subentry_data.get(CONF_NAME),
-                state=subentry_data.get(CONF_STATE),
                 entity_category=subentry_data.get(CONF_ENTITY_CATEGORY, "sensor"),
                 icon=subentry_data.get(CONF_ICON),
             )
@@ -45,19 +45,19 @@ class FakeSensor(SensorEntity):
 
     _attr_has_entity_name = True
 
-    def __init__(  # noqa: PLR0913
+    def __init__(  # noqa: PLR0917
         self,
         entry_id: str,
+        config_entry: ConfigEntry,
         subentry_id: str,
         name: str,
-        state: str,
         entity_category: str,
         icon: str | None = None,
     ) -> None:
         """Initialize the sensor."""
         self._entry_id = entry_id
+        self._config_entry = config_entry
         self._subentry_id = subentry_id
-        self._attr_native_value = state
         self._attr_name = name
         if icon:
             self._attr_icon = icon
@@ -73,3 +73,8 @@ class FakeSensor(SensorEntity):
         self._attr_device_info = DeviceInfo(
             identifiers={(DOMAIN, entry_id)},
         )
+
+    @property
+    def native_value(self) -> str:
+        """Return the configured state from the subentry data."""
+        return self._config_entry.subentries[self._subentry_id].data[CONF_STATE]
