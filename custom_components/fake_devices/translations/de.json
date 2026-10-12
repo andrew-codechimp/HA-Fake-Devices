@@ -7,7 +7,11 @@
                     "name": "Name",
                     "manufacturer": "Hersteller",
                     "model": "Modell",
-                    "serial_number": "Seriennummer"
+                    "serial_number": "Seriennummer",
+                    "mac": "MAC-Adresse"
+                },
+                "data_description": {
+                    "mac": "Optional. Erlaubte Formate: AA:BB:CC:DD:EE:FF, AA-BB-CC-DD-EE-FF, AABB.CCDD.EEFF oder AABBCCDDEEFF."
                 },
                 "sections": {
                     "advanced": {
@@ -29,7 +33,11 @@
                     "name": "Name",
                     "manufacturer": "Hersteller",
                     "model": "Modell",
-                    "serial_number": "Seriennummer"
+                    "serial_number": "Seriennummer",
+                    "mac": "MAC-Adresse"
+                },
+                "data_description": {
+                    "mac": "Optional. Erlaubte Formate: AA:BB:CC:DD:EE:FF, AA-BB-CC-DD-EE-FF, AABB.CCDD.EEFF oder AABBCCDDEEFF."
                 },
                 "sections": {
                     "advanced": {
@@ -47,6 +55,7 @@
                 } }
         },
         "error": {
+            "invalid_mac": "Geben Sie eine gültige MAC-Adresse ein.",
             "invalid_url": "Ungültige URL",
             "unknown": "Unbekannter Fehler."
         },
@@ -55,6 +64,9 @@
         }
     },
     "exceptions": {
+        "invalid_mac": {
+            "message": "Ungültige MAC-Adresse."
+        },
         "invalid_url": {
             "message": "Ungültige URL."
         }

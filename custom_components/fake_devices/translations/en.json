@@ -7,7 +7,11 @@
                     "name": "Name",
                     "manufacturer": "Manufacturer",
                     "model": "Model",
-                    "serial_number": "Serial number"
+                    "serial_number": "Serial number",
+                    "mac": "MAC address"
+                },
+                "data_description": {
+                    "mac": "Optional. Accepts AA:BB:CC:DD:EE:FF, AA-BB-CC-DD-EE-FF, AABB.CCDD.EEFF or AABBCCDDEEFF."
                 },
                 "sections": {
                     "advanced": {
@@ -29,7 +33,11 @@
                     "name": "Name",
                     "manufacturer": "Manufacturer",
                     "model": "Model",
-                    "serial_number": "Serial number"
+                    "serial_number": "Serial number",
+                    "mac": "MAC address"
+                },
+                "data_description": {
+                    "mac": "Optional. Accepts AA:BB:CC:DD:EE:FF, AA-BB-CC-DD-EE-FF, AABB.CCDD.EEFF or AABBCCDDEEFF."
                 },
                 "sections": {
                     "advanced": {
@@ -47,6 +55,7 @@
                 } }
         },
         "error": {
+            "invalid_mac": "Enter a valid MAC address.",
             "invalid_url": "Invalid URL",
             "unknown": "Unknown error."
         },
@@ -55,6 +64,9 @@
         }
     },
     "exceptions": {
+        "invalid_mac": {
+            "message": "Invalid MAC address."
+        },
         "invalid_url": {
             "message": "Invalid URL."
         }
