@@ -7,52 +7,50 @@
                     "name": "Name",
                     "manufacturer": "Manufacturer",
                     "model": "Model",
-                    "serial_number": "Serial number",
-                    "mac": "MAC address"
-                },
-                "data_description": {
-                    "mac": "Optional. Accepts AA:BB:CC:DD:EE:FF, AA-BB-CC-DD-EE-FF, AABB.CCDD.EEFF or AABBCCDDEEFF."
+                    "serial_number": "Serial number"
                 },
                 "sections": {
                     "advanced": {
                         "name": "Additional information",
                         "data": {
+                            "mac": "MAC address",
                             "model_id": "Model ID",
                             "hw_version": "Hardware",
                             "sw_version": "Firmware",
                             "url": "URL"
                         },
                         "data_description": {
+                            "mac": "Accepts AA:BB:CC:DD:EE:FF, AA-BB-CC-DD-EE-FF, AABB.CCDD.EEFF or AABBCCDDEEFF.",
                             "url": "Enter a valid URL to add a Visit link to the device page."
                         }
                     }
-                } },
+                }
+            },
             "reconfigure": {
                 "title": "Reconfigure Fake Device",
                 "data": {
                     "name": "Name",
                     "manufacturer": "Manufacturer",
                     "model": "Model",
-                    "serial_number": "Serial number",
-                    "mac": "MAC address"
-                },
-                "data_description": {
-                    "mac": "Optional. Accepts AA:BB:CC:DD:EE:FF, AA-BB-CC-DD-EE-FF, AABB.CCDD.EEFF or AABBCCDDEEFF."
+                    "serial_number": "Serial number"
                 },
                 "sections": {
                     "advanced": {
                         "name": "Additional information",
                         "data": {
+                            "mac": "MAC address",
                             "model_id": "Model ID",
                             "hw_version": "Hardware",
                             "sw_version": "Firmware",
                             "url": "URL"
                         },
                         "data_description": {
+                            "mac": "Accepts AA:BB:CC:DD:EE:FF, AA-BB-CC-DD-EE-FF, AABB.CCDD.EEFF or AABBCCDDEEFF.",
                             "url": "Enter a valid URL to add a Visit link to the device page."
                         }
                     }
-                } }
+                }
+            }
         },
         "error": {
             "invalid_mac": "Enter a valid MAC address.",

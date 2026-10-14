@@ -21,9 +21,9 @@ async def test_setup_and_reload(
     mac_address: str | None,
 ) -> None:
     """Existing entries and repeated setup preserve a single device."""
-    data = {CONF_NAME: "Test Device"}
+    data = {CONF_NAME: "Test Device", CONF_ADVANCED: {}}
     if mac_address is not None:
-        data[CONF_MAC] = mac_address
+        data[CONF_ADVANCED][CONF_MAC] = mac_address
     entry = MockConfigEntry(domain=DOMAIN, data=data)
     entry.add_to_hass(hass)
 
@@ -55,7 +55,7 @@ async def test_invalid_saved_mac(
     """Malformed saved addresses produce a translated setup failure."""
     entry = MockConfigEntry(
         domain=DOMAIN,
-        data={CONF_NAME: "Test Device", CONF_MAC: mac_address},
+        data={CONF_NAME: "Test Device", CONF_ADVANCED: {CONF_MAC: mac_address}},
     )
     entry.add_to_hass(hass)
 
@@ -78,7 +78,7 @@ async def test_native_mac_matching(
     )
     entry = MockConfigEntry(
         domain=DOMAIN,
-        data={CONF_NAME: "Test Device", CONF_MAC: "AABBCCDDEEFF"},
+        data={CONF_NAME: "Test Device", CONF_ADVANCED: {CONF_MAC: "AABBCCDDEEFF"}},
     )
     entry.add_to_hass(hass)
 
@@ -101,8 +101,10 @@ async def test_invalid_saved_url(hass: HomeAssistant) -> None:
         domain=DOMAIN,
         data={
             CONF_NAME: "Test Device",
-            CONF_MAC: "AA:BB:CC:DD:EE:FF",
-            CONF_ADVANCED: {CONF_URL: "ftp://example.com"},
+            CONF_ADVANCED: {
+                CONF_MAC: "AA:BB:CC:DD:EE:FF",
+                CONF_URL: "ftp://example.com",
+            },
         },
     )
     entry.add_to_hass(hass)

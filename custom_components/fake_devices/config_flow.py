@@ -30,7 +30,6 @@ USER_SCHEMA = vol.Schema(
         vol.Optional(CONF_MANUFACTURER): str,
         vol.Optional(CONF_MODEL): str,
         vol.Optional(CONF_SERIAL_NUMBER): str,
-        vol.Optional(CONF_MAC): str,
         vol.Required(CONF_ADVANCED): section(
             vol.Schema(
                 {
@@ -38,6 +37,7 @@ USER_SCHEMA = vol.Schema(
                     vol.Optional(CONF_HW_VERSION): str,
                     vol.Optional(CONF_SW_VERION): str,
                     vol.Optional(CONF_URL): str,
+                    vol.Optional(CONF_MAC): str,
                 }
             ),
             {"collapsed": True},
@@ -60,19 +60,20 @@ class FakeDevicesFlowHandler(ConfigFlow, domain=DOMAIN):
     async def check_input(self, user_input: dict[str, Any]) -> dict[str, str]:
         """Validate form input and normalise an optional MAC address."""
         errors: dict[str, str] = {}
-        url = user_input.get(CONF_ADVANCED, {}).get(CONF_URL)
+        advanced = user_input[CONF_ADVANCED]
+        url = advanced.get(CONF_URL)
         if url:
             errors = await self.check_url(url)
 
         try:
-            mac_address = normalize_mac_address(user_input.get(CONF_MAC))
+            mac_address = normalize_mac_address(advanced.get(CONF_MAC))
         except ValueError:
-            errors[CONF_MAC] = "invalid_mac"
+            errors[CONF_ADVANCED] = "invalid_mac"
         else:
             if mac_address:
-                user_input[CONF_MAC] = mac_address
+                advanced[CONF_MAC] = mac_address
             else:
-                user_input.pop(CONF_MAC, None)
+                advanced.pop(CONF_MAC, None)
 
         return errors
 
@@ -105,8 +106,8 @@ class FakeDevicesFlowHandler(ConfigFlow, domain=DOMAIN):
         if user_input:
             errors = await self.check_input(user_input)
         if user_input and not errors:
-            old_mac = config_entry.data.get(CONF_MAC)
-            mac_address = user_input.get(CONF_MAC)
+            old_mac = config_entry.data.get(CONF_ADVANCED, {}).get(CONF_MAC)
+            mac_address = user_input[CONF_ADVANCED].get(CONF_MAC)
             if old_mac != mac_address:
                 device_registry = dr.async_get(self.hass)
                 for device in dr.async_entries_for_config_entry(
@@ -117,11 +118,17 @@ class FakeDevicesFlowHandler(ConfigFlow, domain=DOMAIN):
                     connections = set(device.connections)
                     if isinstance(old_mac, str) and old_mac:
                         connections.discard(
-                            (dr.CONNECTION_NETWORK_MAC, dr.format_mac(old_mac.strip()))
+                            (
+                                dr.CONNECTION_NETWORK_MAC,
+                                dr.format_mac(old_mac.strip()),
+                            )
                         )
                     if mac_address:
                         connections.add(
-                            (dr.CONNECTION_NETWORK_MAC, dr.format_mac(mac_address))
+                            (
+                                dr.CONNECTION_NETWORK_MAC,
+                                dr.format_mac(mac_address),
+                            )
                         )
                     # Registration merges connections, so remove the previous MAC explicitly.
                     if connections != device.connections:
@@ -138,8 +145,8 @@ class FakeDevicesFlowHandler(ConfigFlow, domain=DOMAIN):
                     CONF_MANUFACTURER: user_input.get(CONF_MANUFACTURER),
                     CONF_MODEL: user_input.get(CONF_MODEL),
                     CONF_SERIAL_NUMBER: user_input.get(CONF_SERIAL_NUMBER),
-                    **({CONF_MAC: mac_address} if mac_address else {}),
                     CONF_ADVANCED: {
+                        **({CONF_MAC: mac_address} if mac_address else {}),
                         CONF_MODEL_ID: user_input.get(CONF_ADVANCED, {}).get(
                             CONF_MODEL_ID
                         ),

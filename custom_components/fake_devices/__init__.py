@@ -73,7 +73,9 @@ async def async_setup_entry(
             translation_key="invalid_url",
         )
     try:
-        mac_address = normalize_mac_address(entry.data.get(CONF_MAC))
+        mac_address = normalize_mac_address(
+            entry.data.get(CONF_ADVANCED, {}).get(CONF_MAC)
+        )
     except ValueError as err:
         raise ConfigEntryError(
             translation_domain=DOMAIN,

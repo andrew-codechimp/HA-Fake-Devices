@@ -7,52 +7,50 @@
                     "name": "Name",
                     "manufacturer": "Hersteller",
                     "model": "Modell",
-                    "serial_number": "Seriennummer",
-                    "mac": "MAC-Adresse"
-                },
-                "data_description": {
-                    "mac": "Optional. Erlaubte Formate: AA:BB:CC:DD:EE:FF, AA-BB-CC-DD-EE-FF, AABB.CCDD.EEFF oder AABBCCDDEEFF."
+                    "serial_number": "Seriennummer"
                 },
                 "sections": {
                     "advanced": {
                         "name": "Zusätzliche Informationen",
                         "data": {
+                            "mac": "MAC-Adresse",
                             "model_id": "Modell ID",
                             "hw_version": "Hardware",
                             "sw_version": "Firmware",
                             "url": "URL"
                         },
                         "data_description": {
+                            "mac": "Erlaubte Formate: AA:BB:CC:DD:EE:FF, AA-BB-CC-DD-EE-FF, AABB.CCDD.EEFF oder AABBCCDDEEFF.",
                             "url": "Geben Sie eine gültige URL ein, um auf der Geräteseite einen Visit-Link hinzuzufügen."
                         }
                     }
-                } },
+                }
+            },
             "reconfigure": {
                 "title": "Vorgetäuschtes Gerät neu konfigurieren",
                 "data": {
                     "name": "Name",
                     "manufacturer": "Hersteller",
                     "model": "Modell",
-                    "serial_number": "Seriennummer",
-                    "mac": "MAC-Adresse"
-                },
-                "data_description": {
-                    "mac": "Optional. Erlaubte Formate: AA:BB:CC:DD:EE:FF, AA-BB-CC-DD-EE-FF, AABB.CCDD.EEFF oder AABBCCDDEEFF."
+                    "serial_number": "Seriennummer"
                 },
                 "sections": {
                     "advanced": {
                         "name": "Zusätzliche Informationen",
                         "data": {
+                            "mac": "MAC-Adresse",
                             "model_id": "Modell ID",
                             "hw_version": "Hardware",
                             "sw_version": "Firmware",
                             "url": "URL"
                         },
                         "data_description": {
+                            "mac": "Erlaubte Formate: AA:BB:CC:DD:EE:FF, AA-BB-CC-DD-EE-FF, AABB.CCDD.EEFF oder AABBCCDDEEFF.",
                             "url": "Geben Sie eine gültige URL ein, um auf der Geräteseite einen Visit-Link hinzuzufügen."
                         }
                     }
-                } }
+                }
+            }
         },
         "error": {
             "invalid_mac": "Geben Sie eine gültige MAC-Adresse ein.",
