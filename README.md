@@ -11,6 +11,8 @@ This integration creates fake devices in Home Assistant, useful for adding helpe
 
 You can add the device name, manufacturer, model and serial number, plus model id, hardware, firmware and a URL as optional additional information. You can use these to store any short piece of text you want.
 
+You can also add an optional MAC address. The MAC address must be six hexadecimal pairs separated by colons or hyphens, three dotted groups of four digits, or 12 hexadecimal digits (for example, `AA:BB:CC:DD:EE:FF`, `AA-BB-CC-DD-EE-FF`, `AABB.CCDD.EEFF` or `AABBCCDDEEFF`). Home Assistant applies device matching and collision rules.
+
 No entities are created, it's just a device placeholder for using with helpers where you have the option to add to a device.
 
 _Please :star: this repo if you find it useful_

@@ -13,16 +13,19 @@
                     "advanced": {
                         "name": "Additional information",
                         "data": {
+                            "mac": "MAC address",
                             "model_id": "Model ID",
                             "hw_version": "Hardware",
                             "sw_version": "Firmware",
                             "url": "URL"
                         },
                         "data_description": {
+                            "mac": "Accepts AA:BB:CC:DD:EE:FF, AA-BB-CC-DD-EE-FF, AABB.CCDD.EEFF or AABBCCDDEEFF.",
                             "url": "Enter a valid URL to add a Visit link to the device page."
                         }
                     }
-                } },
+                }
+            },
             "reconfigure": {
                 "title": "Reconfigure Fake Device",
                 "data": {
@@ -35,18 +38,22 @@
                     "advanced": {
                         "name": "Additional information",
                         "data": {
+                            "mac": "MAC address",
                             "model_id": "Model ID",
                             "hw_version": "Hardware",
                             "sw_version": "Firmware",
                             "url": "URL"
                         },
                         "data_description": {
+                            "mac": "Accepts AA:BB:CC:DD:EE:FF, AA-BB-CC-DD-EE-FF, AABB.CCDD.EEFF or AABBCCDDEEFF.",
                             "url": "Enter a valid URL to add a Visit link to the device page."
                         }
                     }
-                } }
+                }
+            }
         },
         "error": {
+            "invalid_mac": "Enter a valid MAC address.",
             "invalid_url": "Invalid URL",
             "unknown": "Unknown error."
         },
@@ -55,6 +62,9 @@
         }
     },
     "exceptions": {
+        "invalid_mac": {
+            "message": "Invalid MAC address."
+        },
         "invalid_url": {
             "message": "Invalid URL."
         }

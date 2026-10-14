@@ -12,6 +12,7 @@ from typing import TYPE_CHECKING
 from awesomeversion.awesomeversion import AwesomeVersion
 
 from homeassistant.const import (
+    CONF_MAC,
     CONF_NAME,
     Platform,
     __version__ as HA_VERSION,  # noqa: N812
@@ -19,7 +20,7 @@ from homeassistant.const import (
 from homeassistant.exceptions import ConfigEntryError
 from homeassistant.helpers import config_validation as cv, device_registry as dr
 
-from .common import is_valid_url
+from .common import is_valid_url, normalize_mac_address
 from .const import (
     CONF_ADVANCED,
     CONF_HW_VERSION,
@@ -71,10 +72,23 @@ async def async_setup_entry(
             translation_domain=DOMAIN,
             translation_key="invalid_url",
         )
+    try:
+        mac_address = normalize_mac_address(
+            entry.data.get(CONF_ADVANCED, {}).get(CONF_MAC)
+        )
+    except ValueError as err:
+        raise ConfigEntryError(
+            translation_domain=DOMAIN,
+            translation_key="invalid_mac",
+        ) from err
+
     device_registry = dr.async_get(hass)
     device_registry.async_get_or_create(
         config_entry_id=entry.entry_id,
         identifiers={(DOMAIN, entry.entry_id)},
+        connections={(dr.CONNECTION_NETWORK_MAC, mac_address)}
+        if mac_address
+        else set(),
         name=entry.data[CONF_NAME],
         manufacturer=entry.data.get(CONF_MANUFACTURER),
         model=entry.data.get(CONF_MODEL),
