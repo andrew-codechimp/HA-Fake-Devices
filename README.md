@@ -15,7 +15,7 @@ You can also add an optional MAC address. The MAC address must be six hexadecima
 
 No entities are created, it's just a device placeholder for using with helpers where you have the option to add to a device.
 
-_Please :star: this repo if you find it useful_
+_Please ⭐ this repo on [GitHub][repository] if you find it useful_
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/yellow_img.png)](https://www.buymeacoffee.com/codechimp)
 
@@ -30,6 +30,7 @@ _Please :star: this repo if you find it useful_
 
 Or search for Fake Devices via HACS.
 
+[repository]: https://github.com/andrew-codechimp/HA-Fake-Devices
 [commits-shield]: https://img.shields.io/github/commit-activity/y/andrew-codechimp/HA-Fake-Devices.svg?style=for-the-badge
 [commits]: https://github.com/andrew-codechimp/HA-Fake-Devices/commits/main
 [hacs]: https://github.com/hacs/integration
