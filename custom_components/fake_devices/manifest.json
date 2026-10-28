@@ -1,6 +1,7 @@
 {
   "domain": "fake_devices",
   "name": "Fake Devices",
+  "categories": [ "helpers" ],
   "codeowners": [
     "@andrew-codechimp"
   ],
