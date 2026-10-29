@@ -5,7 +5,7 @@ from logging import Logger, getLogger
 LOGGER: Logger = getLogger(__package__)
 
 DOMAIN = "fake_devices"
-MIN_HA_VERSION = "2026.4.0"
+MIN_HA_VERSION = "2026.8.0"
 
 CONF_MANUFACTURER = "manufacturer"
 CONF_MODEL = "model"

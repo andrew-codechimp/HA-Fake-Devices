@@ -207,11 +207,9 @@ async def test_reconfigure_native_collision(
     )
     entry.add_to_hass(hass)
     assert await hass.config_entries.async_setup(entry.entry_id)
-    other_entry = MockConfigEntry(domain=DOMAIN)
-    other_entry.add_to_hass(hass)
     device_registry.async_get_or_create(
-        config_entry_id=other_entry.entry_id,
-        identifiers={(DOMAIN, other_entry.entry_id)},
+        config_entry_id=entry.entry_id,
+        identifiers={(DOMAIN, "other-device")},
         connections={(dr.CONNECTION_NETWORK_MAC, "11:22:33:44:55:66")},
     )
     result = await entry.start_reconfigure_flow(hass)

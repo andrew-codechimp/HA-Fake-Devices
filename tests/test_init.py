@@ -65,10 +65,10 @@ async def test_invalid_saved_mac(
     assert dr.async_entries_for_config_entry(device_registry, entry.entry_id) == []
 
 
-async def test_native_mac_matching(
+async def test_native_mac_matching_is_scoped_to_config_entry(
     hass: HomeAssistant, device_registry: dr.DeviceRegistry
 ) -> None:
-    """A matching MAC reuses the existing device through native registration."""
+    """A matching MAC in another config entry keeps separate native devices."""
     other_entry = MockConfigEntry()
     other_entry.add_to_hass(hass)
     existing_device = device_registry.async_get_or_create(
@@ -86,12 +86,10 @@ async def test_native_mac_matching(
     await hass.async_block_till_done()
     devices = dr.async_entries_for_config_entry(device_registry, entry.entry_id)
     assert len(devices) == 1
-    assert devices[0].id == existing_device.id
-    assert devices[0].identifiers == {
-        ("test", "existing-device"),
-        (DOMAIN, entry.entry_id),
-    }
-    assert devices[0].config_entries == {other_entry.entry_id, entry.entry_id}
+    assert devices[0].id != existing_device.id
+    assert devices[0].identifiers == {(DOMAIN, entry.entry_id)}
+    assert devices[0].config_entry_id == entry.entry_id
+    assert existing_device.config_entry_id == other_entry.entry_id
     assert devices[0].connections == {(dr.CONNECTION_NETWORK_MAC, "aa:bb:cc:dd:ee:ff")}
 
 
