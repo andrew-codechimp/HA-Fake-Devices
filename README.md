@@ -22,13 +22,11 @@ _Please ⭐ this repo on [GitHub][repository] if you find it useful_
 
 ![Device Creation](https://raw.githubusercontent.com/andrew-codechimp/HA-Fake-Devices/main/images/configuration.png "Device Creation")
 
-## Installation
-
-### HACS
+## Marketplace/HACS Installation
 
 [![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=andrew-codechimp&repository=HA-Fake-Devices&category=Integration)
 
-Or search for Fake Devices via HACS.
+Or search for Fake Devices within Marketplace/HACS.
 
 [repository]: https://github.com/andrew-codechimp/HA-Fake-Devices
 [commits-shield]: https://img.shields.io/github/commit-activity/y/andrew-codechimp/HA-Fake-Devices.svg?style=for-the-badge
