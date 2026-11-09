@@ -1,12 +1,14 @@
+<!-- ha-marketplace:exclude-start -->
 # Fake Devices Home Assistant Integration
 
 [![GitHub Release][releases-shield]][releases]
 [![GitHub Activity][commits-shield]][commits]
 [![Downloads][download-latest-shield]]()
-<!-- [![HACS Installs][hacs-installs-shield]]() -->
+[![Installs][marketplace-installs-shield]][hacs-install]
+[![marketplace][marketplacebadge]][marketplace]
 [![License][license-shield]](LICENSE)
-[![hacs][hacsbadge]][hacs]
 
+<!-- ha-marketplace:exclude-end -->
 This integration creates fake devices in Home Assistant, useful for adding helper integrations like [Battery Notes](https://github.com/andrew-codechimp/ha-battery-notes) to real world non-smart devices that are not in Home Assistant, for example TV Remotes and Wall Clocks.
 
 You can add the device name, manufacturer, model and serial number, plus model id, hardware, firmware and a URL as optional additional information. You can use these to store any short piece of text you want.
@@ -22,20 +24,23 @@ _Please ⭐ this repo on [GitHub][repository] if you find it useful_
 
 ![Device Creation](https://raw.githubusercontent.com/andrew-codechimp/HA-Fake-Devices/main/images/configuration.png "Device Creation")
 
+<!-- ha-marketplace:exclude-start -->
 ## Marketplace/HACS Installation
 
 [![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=andrew-codechimp&repository=HA-Fake-Devices&category=Integration)
 
 Or search for Fake Devices within Marketplace/HACS.
+<!-- ha-marketplace:exclude-end -->
 
 [repository]: https://github.com/andrew-codechimp/HA-Fake-Devices
 [commits-shield]: https://img.shields.io/github/commit-activity/y/andrew-codechimp/HA-Fake-Devices.svg?style=for-the-badge
 [commits]: https://github.com/andrew-codechimp/HA-Fake-Devices/commits/main
-[hacs]: https://github.com/hacs/integration
-[hacsbadge]: https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=for-the-badge
-[exampleimg]: example.png
 [license-shield]: https://img.shields.io/github/license/andrew-codechimp/HA-Fake-Devices.svg?style=for-the-badge
 [releases-shield]: https://img.shields.io/github/release/andrew-codechimp/HA-Fake-Devices.svg?style=for-the-badge
 [releases]: https://github.com/andrew-codechimp/HA-Fake-Devices/releases
 [download-latest-shield]: https://img.shields.io/github/downloads/andrew-codechimp/HA-Fake-Devices/latest/total?style=for-the-badge
-[hacs-installs-shield]: https://img.shields.io/endpoint.svg?url=https%3A%2F%2Flauwbier.nl%2Fhacs%2Ffake_devices&style=for-the-badge
+[marketplace-installs-shield]: https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fanalytics.home-assistant.io%2Fcustom_integrations.json&query=%24.fake_devices.total&style=for-the-badge&label=Marketplace%20installs
+[marketplace-install]: https://my.home-assistant.io/redirect/marketplace_repository/?owner=andrew-codechimp&repository=fake_devices&category=integration
+[hacs-install]: https://my.home-assistant.io/redirect/hacs_repository/?owner=andrew-codechimp&repository=HA-Fake-Devices&category=Integration
+[marketplace]: https://home-assistant.io/integrations/marketplace
+[marketplacebadge]: https://img.shields.io/badge/Marketplace-Default-41BDF5.svg?style=for-the-badge
