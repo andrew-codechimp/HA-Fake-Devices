@@ -27,7 +27,7 @@ _Please ⭐ this repo on [GitHub][repository] if you find it useful_
 <!-- ha-marketplace:exclude-start -->
 ## Marketplace/HACS Installation
 
-[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=andrew-codechimp&repository=HA-Fake-Devices&category=Integration)
+[![Open your Home Assistant instance and open a repository in the Marketplace.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=andrew-codechimp&repository=HA-Fake-Devices&category=Integration)
 
 Or search for Fake Devices within Marketplace/HACS.
 <!-- ha-marketplace:exclude-end -->
